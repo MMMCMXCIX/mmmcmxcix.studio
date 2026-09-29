@@ -1,6 +1,6 @@
 # MMMCMXCIX
 
-A static site with no framework, build step or tracking. The public page is a holding page with a key field. Everything behind the key is encrypted in `vault.json` and only decrypts in the browser when the right key is entered.
+A static site with no framework, build step or tracking. The public pages are a plain listings index, a public key and contact terms. Everything behind the key is encrypted in `vault.json` and only decrypts in the browser when the right key is entered.
 
 ## How the key works
 
@@ -18,17 +18,42 @@ The lock is exactly as strong as the key. Use a passphrase of at least 16 charac
 
 | Path | What it is |
 | --- | --- |
-| `index.html` | Public holding page with the key field |
-| `404.html` | Not-found page |
+| `index.html` | Listings |
+| `pgp.html` | Public key |
+| `contact.html` | Contact terms |
+| `vault.html` | Key field; decrypts `vault.json` |
+| `404.html` | Not found |
+| `listings/` | One page per work (`M-0001.html`, ...) |
+| `templates/listing.html` | Template for a listing page (not deployed) |
 | `assets/css/site.css` | All styles. `--soft` in `:root` sets the text bleed (0 = crisp) |
 | `assets/js/vault.js` | Browser-side decryption |
 | `assets/fonts/` | Xanh Mono, self-hosted (SIL OFL 1.1, see `OFL.txt`) |
-| `assets/img/` | Favicon, app icons, social preview image |
-| `private/content.example.html` | Template for the private pages |
+| `assets/img/` | Favicon, app icons, social preview image; listing photos go in `assets/img/listings/` |
+| `private/content.example.html` | Template for the vault's contents |
 | `scripts/seal.mjs` | Encrypts `private/content.html` into `vault.json` |
 | `robots.txt`, `sitemap.xml`, `site.webmanifest`, `humans.txt` | SEO and platform files |
 | `CNAME` | The custom domain for GitHub Pages |
 | `.github/workflows/pages.yml` | Deploys only the public files on every push to `main` |
+
+## Adding a listing
+
+1. Copy `templates/listing.html` to `listings/M-0001.html` and fill in the brackets.
+2. Put photos in `assets/img/listings/` (for example `M-0001-1.jpg`, around 1600 px wide).
+3. Add a row to the table in `index.html`; examples are in the comment there. States: `available`, `not available`, `gone` (give gone rows `class="gone"`).
+4. Update `listings:` and `updated:` in the vendor strip (every page), and add the page to `sitemap.xml`.
+5. Sign it (below) and paste the signature into the page.
+
+## PGP
+
+Generate a key once (GnuPG, or Gpg4win on Windows):
+
+```sh
+gpg --full-generate-key                 # ed25519, name MMMCMXCIX, your contact address
+gpg --fingerprint MMMCMXCIX             # paste into pgp.html
+gpg --armor --export MMMCMXCIX > pgp.asc   # commit; paste the block into pgp.html
+```
+
+Sign a listing: write its details in `listing.txt`, run `gpg --clearsign listing.txt`, and paste the output into the page's signature box. Anyone can check it with `gpg --verify` against the published key. Keep the private key off GitHub and back it up offline.
 
 ## Setup
 

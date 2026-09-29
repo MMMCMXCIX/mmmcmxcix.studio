@@ -1,5 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /vault.html
 Disallow: /vault.json
 
 Sitemap: https://mmmcmxcix.studio/sitemap.xml

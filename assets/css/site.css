@@ -1,4 +1,4 @@
-/* MMMCMXCIX — plain text, black and white. */
+/* MMMCMXCIX */
 
 @font-face {
   font-family: "Xanh Mono";
@@ -8,27 +8,15 @@
   font-display: swap;
 }
 
-@font-face {
-  font-family: "Xanh Mono";
-  src: url("../fonts/xanh-mono-400-italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
-  font-display: swap;
-}
-
 :root {
-  --ink: #fff;
   --ground: #000;
-  --soft: 0.35; /* 0 = crisp, 1 = heavy bleed */
-  --glow: calc(var(--soft) * 3px);
-  --blur: calc(var(--soft) * 0.6px);
+  --panel: #1c1c1c;
+  --hi: #5a5a5a;   /* bevel light edge */
+  --lo: #0e0e0e;   /* bevel dark edge */
+  --ink: #e0e0e0;
+  --dim: #a0a0a0;
+  --soft: 0.3;     /* 0 = crisp, 1 = heavy bleed */
   color-scheme: dark;
-}
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
 }
 
 html {
@@ -39,170 +27,270 @@ html {
 
 body {
   margin: 0;
-  min-height: 100vh;
-  min-height: 100dvh;
   background: var(--ground);
   color: var(--ink);
-  font: 16px/1.6 "Xanh Mono", "Courier New", Courier, monospace;
-  text-shadow: 0 0 var(--glow) rgba(255, 255, 255, 0.55);
-  -webkit-font-smoothing: auto;
+  font: 12px/1.45 Verdana, Tahoma, "DejaVu Sans", sans-serif;
+  text-shadow: 0 0 calc(var(--soft) * 3px) rgba(255, 255, 255, 0.45);
 }
 
-.page {
-  padding: 64px 96px;
+.house {
+  font-family: "Xanh Mono", "Courier New", monospace;
 }
 
-/* The bleed: text only, never the password field, caret or focus ring. */
-.col > :not(.gate):not(.status) {
-  filter: blur(var(--blur));
+.wrap {
+  width: 780px;
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 16px 10px 40px;
+  box-sizing: border-box;
 }
 
-.col {
-  max-width: 640px;
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+.bleed {
+  filter: blur(calc(var(--soft) * 0.45px));
 }
 
 a {
   color: var(--ink);
   text-decoration: underline;
-  text-underline-offset: 3px;
-  text-decoration-thickness: 1px;
+}
+
+a:visited {
+  color: var(--dim);
 }
 
 a:hover {
+  color: var(--ground);
+  background: var(--ink);
   text-decoration: none;
+  text-shadow: none;
 }
 
 :focus-visible {
-  outline: 1px dashed var(--ink);
-  outline-offset: 4px;
+  outline: 1px dotted var(--ink);
+  outline-offset: 2px;
 }
 
-p,
-pre,
 h1,
-h2 {
+h2,
+p {
   margin: 0;
-  font: inherit;
 }
 
-pre {
-  white-space: pre;
-  overflow-x: auto;
+hr {
+  margin: 10px 0;
+  border: 0;
+  border-top: 1px solid var(--lo);
+  border-bottom: 1px solid var(--hi);
 }
 
+/* Wordmark */
 .mark {
-  letter-spacing: 0.2em;
+  display: inline-block;
+  font-family: "Xanh Mono", "Courier New", monospace;
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: 0.12em;
   text-decoration: none;
+  color: var(--ink);
 }
 
-.meta {
-  display: flex;
-  flex-direction: column;
+.mark:visited {
+  color: var(--ink);
 }
 
-/* Password line: reads like a terminal prompt, not a form. */
+.head {
+  padding: 6px 0 8px;
+}
+
+/* Vendor strip */
+.strip {
+  margin-top: 6px;
+  color: var(--dim);
+}
+
+.strip b {
+  color: var(--ink);
+}
+
+/* Nav */
+.tabs {
+  margin: 0;
+}
+
+.tabs [aria-current="page"] {
+  font-weight: bold;
+}
+
+.tabs .br {
+  color: var(--dim);
+}
+
+/* Section titles */
+.title {
+  margin: 14px 0 6px;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* Bevelled tables, cellspacing 2 */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 2px;
+  border: 1px solid;
+  border-color: var(--hi) var(--lo) var(--lo) var(--hi);
+  background: var(--ground);
+}
+
+th,
+td {
+  padding: 4px 6px;
+  text-align: left;
+  vertical-align: top;
+  border: 1px solid;
+  border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+}
+
+th {
+  background: var(--panel);
+  font-weight: bold;
+}
+
+td.id {
+  width: 80px;
+  font-family: "Xanh Mono", "Courier New", monospace;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+td.state {
+  width: 110px;
+  white-space: nowrap;
+}
+
+td.price,
+th.price {
+  width: 80px;
+  text-align: right;
+}
+
+tr.gone td {
+  color: var(--dim);
+}
+
+tr.gone td.item {
+  text-decoration: line-through;
+}
+
+td.empty {
+  padding: 16px;
+  text-align: center;
+  color: var(--dim);
+}
+
+.note {
+  margin-top: 4px;
+  color: var(--dim);
+}
+
+/* Field tables (label: value) */
+table.fields th {
+  width: 120px;
+  font-weight: bold;
+}
+
+/* PGP / signature blocks */
+pre {
+  margin: 0;
+  padding: 8px;
+  border: 1px solid;
+  border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+  background: var(--panel);
+  font-family: "Xanh Mono", "Courier New", monospace;
+  font-size: 13px;
+  line-height: 1.35;
+  white-space: pre-wrap;
+  word-break: break-all;
+}
+
+.plate {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  border: 1px solid;
+  border-color: var(--lo) var(--hi) var(--hi) var(--lo);
+}
+
+/* Vault: native controls, left alone */
 .gate {
   display: flex;
-  align-items: baseline;
-  gap: 12px;
+  align-items: center;
+  gap: 6px;
   flex-wrap: wrap;
 }
 
 .gate label {
-  flex: none;
+  font-weight: bold;
 }
 
 .gate input {
-  width: 22ch;
-  height: 44px;
-  padding: 18px 0 2px;
-  border: 0;
-  border-bottom: 1px solid var(--ink);
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink);
-  font: inherit;
-  caret-color: var(--ink);
-}
-
-.gate input:focus {
-  outline: none;
-  border-bottom-style: dashed;
+  width: 220px;
+  font: 12px Verdana, Tahoma, sans-serif;
 }
 
 .gate button {
-  min-height: 44px;
-  padding: 0;
-  border: 0;
-  background: none;
-  color: var(--ink);
-  font: inherit;
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  font: 12px Verdana, Tahoma, sans-serif;
   cursor: pointer;
 }
 
-.gate button:hover {
-  text-decoration: none;
-}
-
-.gate button[disabled] {
-  cursor: wait;
-  opacity: 0.6;
-}
-
 .status {
-  min-height: 1.6em;
+  min-height: 1.45em;
+  margin-top: 6px;
+}
+
+/* Footer */
+.foot {
+  color: var(--dim);
 }
 
 nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.visually-hidden {
-  position: absolute !important;
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip: rect(0 0 0 0);
-  white-space: nowrap;
-  border: 0;
-}
-
-@media (max-width: 720px) {
-  .page {
-    padding: 40px 24px;
-  }
-  pre {
+@media (max-width: 600px) {
+  body {
     font-size: 13px;
   }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-    animation: none !important;
+  .mark {
+    font-size: 28px;
+  }
+  td.state,
+  td.price,
+  th.price {
+    width: auto;
+  }
+  table.fields th {
+    width: 90px;
   }
 }
 
 @media print {
   :root {
-    --ink: #000;
     --ground: #fff;
+    --panel: #fff;
+    --ink: #000;
+    --dim: #444;
     --soft: 0;
   }
   .gate,
-  .status {
+  .status,
+  .tabs {
     display: none;
   }
+}
+
+.nw {
+  white-space: nowrap;
 }
