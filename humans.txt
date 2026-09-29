@@ -1,0 +1,7 @@
+/* HOUSE */
+MMMCMXCIX
+Est. MMXXVI
+
+/* SITE */
+Plain HTML, CSS and a little JavaScript. No framework, no tracking.
+Type: Courier Prime (SIL Open Font License 1.1).

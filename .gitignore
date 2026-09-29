@@ -1,0 +1,9 @@
+# Never commit the readable private pages. Only vault.json goes public.
+private/content.html
+private/*.html
+!private/content.example.html
+
+node_modules/
+_site/
+.DS_Store
+Thumbs.db

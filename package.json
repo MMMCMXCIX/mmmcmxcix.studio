@@ -1,0 +1,12 @@
+{
+  "name": "mmmcmxcix",
+  "private": true,
+  "version": "1.0.0",
+  "description": "MMMCMXCIX. The genuine article, never the filter.",
+  "type": "module",
+  "scripts": {
+    "seal": "node scripts/seal.mjs",
+    "serve": "npx --yes serve@14 -l 8080 ."
+  },
+  "engines": { "node": ">=18" }
+}
