@@ -69,7 +69,7 @@
     button.disabled = true;
     status.textContent = "...";
 
-    fetch("/vault.json", { cache: "no-store" })
+    fetch("vault.json", { cache: "no-store" })
       .then(function (r) {
         if (r.status === 404) throw new Error("empty");
         if (!r.ok) throw new Error("network");
