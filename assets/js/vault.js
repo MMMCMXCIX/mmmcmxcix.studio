@@ -19,6 +19,15 @@
     return;
   }
 
+  // Show the ciphertext itself: public, unreadable without the key.
+  var sealed = document.getElementById("sealed");
+  if (sealed) {
+    fetch("vault.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (v) { if (v && v.ct) sealed.textContent = v.ct; })
+      .catch(function () {});
+  }
+
   function fromB64(s) {
     var bin = atob(s);
     var out = new Uint8Array(bin.length);
