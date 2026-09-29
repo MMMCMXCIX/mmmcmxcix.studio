@@ -1,16 +1,16 @@
 /* MMMCMXCIX — plain text, black and white. */
 
 @font-face {
-  font-family: "Courier Prime";
-  src: url("../fonts/courier-prime-400.woff2") format("woff2");
+  font-family: "Xanh Mono";
+  src: url("../fonts/xanh-mono-400.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Courier Prime";
-  src: url("../fonts/courier-prime-400-italic.woff2") format("woff2");
+  font-family: "Xanh Mono";
+  src: url("../fonts/xanh-mono-400-italic.woff2") format("woff2");
   font-weight: 400;
   font-style: italic;
   font-display: swap;
@@ -43,7 +43,7 @@ body {
   min-height: 100dvh;
   background: var(--ground);
   color: var(--ink);
-  font: 15px/1.6 "Courier Prime", "Courier New", Courier, monospace;
+  font: 16px/1.6 "Xanh Mono", "Courier New", Courier, monospace;
   text-shadow: 0 0 var(--glow) rgba(255, 255, 255, 0.55);
   -webkit-font-smoothing: auto;
 }

@@ -1,4 +1,4 @@
-Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime). CourierPrime-Italic.ttf: Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime). CourierPrime-Bold.ttf: Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime). CourierPrime-BoldItalic.ttf: Copyright 2015 The Courier Prime Project Authors (https://github.com/quoteunquoteapps/CourierPrime).
+Copyright 2020 The XanhMono Project Authors (https://github.com/yellow-type-foundry/xanhmono) XanhMono-Italic.ttf: Copyright 2020 The XanhMono Project Authors (https://github.com/yellow-type-foundry/xanhmono)
 
 This Font Software is licensed under the SIL Open Font License, Version 1.1.
 This license is copied below, and is also available with a FAQ at:

@@ -2,7 +2,7 @@
   "name": "mmmcmxcix",
   "private": true,
   "version": "1.0.0",
-  "description": "MMMCMXCIX. The genuine article, never the filter.",
+  "description": "MMMCMXCIX",
   "type": "module",
   "scripts": {
     "seal": "node scripts/seal.mjs",

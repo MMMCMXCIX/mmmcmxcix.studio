@@ -1,7 +1,5 @@
 # MMMCMXCIX
 
-The genuine article, never the filter.
-
 A static site with no framework, build step or tracking. The public page is a holding page with a key field. Everything behind the key is encrypted in `vault.json` and only decrypts in the browser when the right key is entered.
 
 ## How the key works
@@ -24,7 +22,7 @@ The lock is exactly as strong as the key. Use a passphrase of at least 16 charac
 | `404.html` | Not-found page |
 | `assets/css/site.css` | All styles. `--soft` in `:root` sets the text bleed (0 = crisp) |
 | `assets/js/vault.js` | Browser-side decryption |
-| `assets/fonts/` | Courier Prime, self-hosted (SIL OFL 1.1, see `OFL.txt`) |
+| `assets/fonts/` | Xanh Mono, self-hosted (SIL OFL 1.1, see `OFL.txt`) |
 | `assets/img/` | Favicon, app icons, social preview image |
 | `private/content.example.html` | Template for the private pages |
 | `scripts/seal.mjs` | Encrypts `private/content.html` into `vault.json` |

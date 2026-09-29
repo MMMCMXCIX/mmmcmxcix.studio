@@ -4,4 +4,4 @@ Est. MMXXVI
 
 /* SITE */
 Plain HTML, CSS and a little JavaScript. No framework, no tracking.
-Type: Courier Prime (SIL Open Font License 1.1).
+Type: Xanh Mono (SIL Open Font License 1.1).
